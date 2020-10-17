@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<style type="text/css">
+	.card{
+		max-width: 700px;
+        width: 100%;
+        
+	}
+	.card-body{
+		padding: 20px;
+    }
+</style>
+
+<br><br><br>
+
+           
+            
+
+        <div class="container">
+            <div class="row">
+                <div class="card" >
+                <div class="card-header"><h3 class="mb-30">Regesterations Form </h3></div>
+                <div class="card-body m-auto">
+    <form method="POST" class="form-group" >{% csrf_token %}
+        {% for field in form %}
+            <p>
+                {{field.label_tag}}<br>
+                {{field}}
+                {% if field.help_text %}
+                    <small style="color: gray;" > {{field.help_text}} </small>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p style="color: red;"  > {{error}}</p>
+                {% endfor %}
+            </p>
+        {% endfor%}
+        
+        <div class="button-group-area mt-40">
+            <button type="submit" class="genric-btn primary circle">Primary</button>
+        </div>
+
+    </form>
+            </div >
+        </div>
+</div>
+</div >
+
+{% endblock content %}

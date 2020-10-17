@@ -1,0 +1,92 @@
+
+<style type="text/css">
+	.card{
+		max-width: 700px;
+		width: 100%;
+	}
+	.card-body{
+		padding: 20px;
+	}
+</style>
+{% load cloudinary %}
+
+{% if blog_post %}
+
+<section>
+    <div class="single-post-item">
+        <figure>
+                <img class="card-img-top post-img img-fluid"  src=" {{ post.image_url|default_if_none:'#' }} " >
+        </figure>
+        <h3>
+           
+            <a href="{% url 'blog:detail' post.slug %}">{{post.title}}</a>
+        </h3>
+         <p >{{post.body|safe|truncatechars:180}}</p>
+         {% if post.author == request.user %}
+			  	<a href="{% url 'blog:edit' post.slug %}" class="btn btn-primary">Update</a>
+		{% endif %}
+
+        
+        <a href="{% url 'blog:detail' post.slug %}" class="primary-btn text-uppercase mt-15">continue Reading</a>
+        <div class="post-box">
+            <div class="d-flex">
+                <div >
+                   
+                        <img src="{{post.author.image.url}}" style="width: 80px; height: 80px;" class="rounded-circle" alt="">
+                   
+                </div>
+                
+                <div class="post-meta">
+                    <div class="meta-head">
+                        <a href="#">{{post.author.username}}</a>
+                    </div>
+                    <div class="meta-details">
+                        <ul>
+                            
+                            <li>
+                                <a href="#">
+                                    <span class="lnr lnr-calendar-full"></span>
+                                    Updated on {{post.date_updated}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="lnr lnr-tag"></span>
+                                    {{post.category}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="lnr lnr-bubble"></span>
+                                    {{post.number_of_comments}}
+
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% else %}
+
+<div class="container">
+    <div class="row">
+        <div class="card m-auto">
+            <div class="card-body mt-2 mb-2">
+                <h2 class="card-title">No results</h2>
+                <p class="card-text"> No result matchin your search : "{{query}}"</p>
+
+            </div>
+        </div>
+    </div> 
+
+</div>
+
+
+
+{% endif %}
+

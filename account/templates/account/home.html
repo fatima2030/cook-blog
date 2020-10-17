@@ -1,0 +1,121 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load cloudinary %}
+
+{% block content %}
+<style type="text/css">
+
+	@media (max-width: 768px) { 
+		.right-column{
+			margin-left: 0px;
+		}
+	}
+
+	@media (min-width: 768px) { 
+		.right-column{
+			margin-left: 20px;
+		}
+	}
+
+	.blog-post-container{
+		margin-bottom: 20px;
+		width: 100%;
+	}
+	.create-post-bar{
+		background-color: #fff;
+		margin-bottom:20px;
+	}
+
+	.left-column{
+		padding:0px;
+	}
+
+	.right-column{
+		padding:0px;
+	}
+	.lead{
+		font-size: 17px;
+	}
+</style>
+	<section class="banner-area">
+		<div class="container box_1170">
+			<div class="row fullscreen d-flex align-items-center justify-content-center">
+				<div class="banner-content text-center col-lg-8">
+					<h1>
+						Sweetes <br>
+						and Cake
+					</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	<hr>
+<div class="container">
+
+	
+    <div class="row">
+        <div class="left-column col-lg-7 offset-lg-1">
+			<div class=" d-lg-none mb-3">
+				<div class="single-widget search-widget">
+					<form class="example" action="#" style="margin:auto;max-width:300px">
+						<input type="text" placeholder="Search Posts" name="search2">
+						<button type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
+				<div class="card m-auto d-flex flex-column p-3" >
+					<img class="img-fluid d-block m-auto pb-2  rounded-circle mr-3" src="static/sblog/imags/logo.jpg" width="72" height="72">
+					<p class="lead">In this blog you'll learn how to cook sweets and cake .</p>
+						<p class="m-auto"><a class="btn btn-primary" href="{% url 'blog:craete' %}">Create Post</a></p>
+				</div>
+			</div>
+
+			{% if blog_posts %}
+				{% for post in blog_posts %}
+					<div class="blog-post-container">
+						{% include 'blog/blog_post_snippet.html' with blog_post=post %}
+
+					</div>
+				{% endfor %}
+
+			{% else %}
+					<div class="blog-post-container">
+						{% include 'blog/blog_post_snippet.html' with query=query  %}
+
+					</div>
+			{% endif %}
+			{% include 'blog/blog_post_pagination.html' with blog_posts=blog_posts %}
+
+			
+			
+			
+
+
+
+
+        </div>
+        <div class="right-column col-lg-3 d-lg-flex d-none flex-column">
+			<div class="single-widget search-widget">
+				<form method="get" class="example" action="#" style="margin:auto;max-width:300px">
+					<input type="text" placeholder="Search Posts" name="q" id="id_q">
+					<button type="submit"><i class="fa fa-search"></i></button>
+				</form>
+			</div>
+			<div class="card create-post-bar d-flex flex-column p-3">
+				<img class="img-fluid d-block m-auto pb-2 rounded-circle mr-3 " src="static/sblog/imags/logo.jpg" width="72" height="72">
+				<p class="lead">In this blog you'll learn how to cook sweets and cake .</p>
+			<p class="m-auto"><a class="btn btn-primary" href="{% url 'blog:craete' %}" >Create post</a></p>
+		  <div >
+		</div>
+        
+    </div>
+
+</div>
+</div>
+
+<script type="text/javascript">
+	document.getElementById("id_q").value = "{{query}}"
+</script>
+
+
+{% endblock content %}

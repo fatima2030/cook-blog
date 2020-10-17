@@ -1,0 +1,46 @@
+<style type="text/css">
+	@media (min-width: 768px) {
+	  html {
+	    font-size: 16px;
+	  }
+	}
+
+	.search-bar{
+		max-width: 500px;
+		width: 100%;
+	}
+	form{
+		width: 100%;
+	}
+</style>
+
+<header id="header" >
+    <div class="container box_1170 main-menu">
+        <div class="row align-items-center justify-content-between d-flex">
+            <div id="logo">
+                <a href="/">
+                    {% if request.user.is_authenticated %}
+                    <h3 class=" p-2 text-light" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: deeppink !important ;"> Hellow {{request.user.username}}"</h3>
+                {% endif %}
+                </a>
+            </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-active"><a href="/">Home</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'account:accountt' %}">Account</a></li>
+                    <li><a href="{% url 'account:logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'account:Login' %}">Login</a></li>
+                    <li><a href="{% url 'account:register_user' %}">Register</a></li>
+
+                    {% endif %}
+                    
+                    <li><a href="{% url 'blog:contact' %}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+

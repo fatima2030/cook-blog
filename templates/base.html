@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+	{% load static %}
+
+	<title >Sweets&Cake</title>
+	<meta name='viewport' content="width=device-width, initial-scale=1.0"> 
+	<link rel="stylesheet" type="text/css" href="{% static 'sblog/css/bootstrap.css'%}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'sblog/css/style.css'%}" />
+
+        
+
+	<script src="{% static 'sblog/js/bootstrap.js'%}"></script>
+
+
+	<link rel="stylesheet" href="{% static 'sblog/css/linearicons.css' %} ">
+	<link rel="stylesheet" href="{% static 'sblog/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'sblog/css/bootstrap.css' %} ">
+	<link rel="stylesheet" href="{% static 'sblog/css/magnific-popup.css' %} ">
+	<link rel="stylesheet" href="{% static 'sblog/css/nice-select.css' %}">
+	<link rel="stylesheet" href="{% static 'sblog/css/animate.min.css' %} ">
+	<link rel="stylesheet" href="{% static 'sblog/css/owl.carousel.css' %}">
+	<link rel="stylesheet" href="{% static 'sblog/css/main.css' %} ">
+	{% include 'header.html' %}
+</head>
+
+<body>
+
+<!-- Body -->
+<style type="text/css">
+	.main{
+		min-height: 100vh;
+		height: 100%;
+	}
+</style>
+<div class="main ">
+	
+
+	{% block content %}
+
+	{% endblock content %}
+	
+
+</div>
+<!-- End Body -->
+
+	<script src="{% static 'sblog/js/vendor/jquery-2.2.4.min.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="{% static 'sblog/js/vendor/bootstrap.min.js' %} "></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="{% static 'sblog/js/easing.min.js' %}"></script>
+	<script src="{% static 'sblog/js/hoverIntent.js' %}"></script>
+	<script src="{% static 'sblog/js/superfish.min.js' %} "></script>
+	<script src="{% static 'sblog/js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'sblog/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'sblog/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'sblog/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'sblog/js/waypoints.min.js' %}"></script>
+	<script src="{% static 'sblog/js/mail-script.js' %} "></script>
+	<script src="{% static 'sblog/js/main.js' %}"></script>
+</body>
+{% include 'footer.html' %}
+
+</html>
